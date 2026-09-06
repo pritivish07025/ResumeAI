@@ -23,7 +23,7 @@ resume-ai-project/
 │   ├── controllers/
 │   ├── routes/
 │   ├── server.js
-│   └── .env.example
+│   └── .env
 └── client/                 # React + Vite + Tailwind frontend
     ├── src/
     │   ├── api/axios.js      # Axios instance with JWT interceptor
@@ -32,7 +32,7 @@ resume-ai-project/
     │   ├── pages/             # Home, Login, Register, Dashboard, UploadResume, JobAnalysis, SkillGap (Results)
     │   ├── App.jsx
     │   └── main.jsx
-    └── .env.example
+    └── .env
 ```
 
 ## Prerequisites
