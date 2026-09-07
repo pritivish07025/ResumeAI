@@ -12,9 +12,7 @@ Users can upload their resumes, compare them with job descriptions, identify ski
 
 🚀 **[Live Website](https://resumea1.netlify.app/)**
 
-⚙️ **[Backend API](https://resumeai-8ys4.onrender.com/api)**
 
-❤️ **[API Health Check](https://resumeai-8ys4.onrender.com/api/health)**
 
 ---
 
