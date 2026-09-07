@@ -46,7 +46,7 @@ resume-ai-project/
 ```bash
 cd server
 npm install
-cp .env.example .env
+cp .env
 ```
 
 Edit `.env`:
@@ -73,7 +73,7 @@ The API will be live at `http://localhost:5000/api`. Check `http://localhost:500
 ```bash
 cd client
 npm install
-cp .env.example .env
+cp  .env
 ```
 
 Edit `.env` if needed (defaults already match the backend):
