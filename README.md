@@ -1,200 +1,232 @@
-# ResumeAI 🚀
+ResumeAI 🚀
 
-**AI-Powered Resume Analyzer, Skill Gap Detector, ATS Checker & Interview Preparation Platform**
+AI-Powered Resume Analysis, ATS Optimization & Interview Preparation Platform
 
-ResumeAI is a full-stack MERN application that helps job seekers analyze, improve, and optimize their resumes using Artificial Intelligence. Upload a resume, compare it with a job description, identify skill gaps, generate personalized interview questions, check ATS compatibility, and build an ATS-friendly resume — all in one place.
 
-[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen)](https://resumea1.netlify.app/)
-[![Frontend](https://img.shields.io/badge/Frontend-Netlify-00C7B7)](https://resumea1.netlify.app/)
-[![Backend](https://img.shields.io/badge/Backend-Render-46E3B7)](https://resumeai-8ys4.onrender.com/api)
-[![License](https://img.shields.io/badge/License-Educational-blue)](#-license)
 
----
 
-## 🌐 Live Demo
+ResumeAI is a full-stack MERN application that helps students and job seekers analyze, improve, and optimize their resumes using Artificial Intelligence.
 
-🚀 **Live Website:** [https://resumea1.netlify.app/](https://resumea1.netlify.app/)
-💻 **GitHub Repository:** [pritivish07025/ResumeAI](https://github.com/pritivish07025/ResumeAI)
-🩺 **API Health Check:** [https://resumeai-8ys4.onrender.com/api/health](https://resumeai-8ys4.onrender.com/api/health)
+Users can upload PDF/DOCX resumes, compare them with job descriptions, identify skill gaps, receive AI-powered recommendations, generate personalized interview questions, check ATS compatibility, and build ATS-friendly resumes.
 
----
+🌐 Live Application
 
-## 📑 Table of Contents
+🚀 Open ResumeAI
 
-- [Why ResumeAI?](#-why-resumeai)
-- [Features](#-features)
-- [Tech Stack](#️-tech-stack)
-- [Architecture](#️-architecture)
-- [Project Structure](#-project-structure)
-- [Prerequisites](#️-prerequisites)
-- [Getting Started](#-getting-started)
-- [Environment Variables](#-environment-variables)
-- [Production Configuration](#-production-configuration)
-- [API Documentation](#-api-documentation)
-- [User Workflow](#-user-workflow)
-- [Technical Workflow](#-technical-workflow)
-- [Contributing](#-contributing)
-- [Reporting Issues](#-reporting-issues)
-- [Security](#-security)
-- [Limitations](#️-limitations)
-- [Future Roadmap](#️-future-roadmap)
-- [Author](#-author)
-- [License](#-license)
+Frontend: https://resumea1.netlify.app/
 
----
+Backend API: https://resumeai-8ys4.onrender.com/api
 
-## 🎯 Why ResumeAI?
+Health Check: https://resumeai-8ys4.onrender.com/api/health
 
-ResumeAI brings multiple job-preparation tools into one platform:
+Repository: https://github.com/pritivish07025/ResumeAI
 
-- ✅ Resume analysis against a target job description
-- ✅ Skill matching and skill-gap detection
-- ✅ AI-powered resume recommendations
-- ✅ Personalized interview preparation
-- ✅ ATS compatibility checking
-- ✅ ATS-friendly resume rewriting
-- ✅ Professional resume building with LaTeX support
+The backend is hosted on Render. The first request can take a little longer if the service is waking up.
 
----
+🎯 Project Overview
 
-## ✨ Features
+ResumeAI combines resume analysis, ATS checking, skill-gap detection, interview preparation, and resume building into one application.
 
-### 🔐 Authentication
-- User registration and login
-- JWT-based authentication
-- Protected routes
-- Persistent authentication using `localStorage`
-- User-specific resume and analysis data
+Problems it addresses
 
-### 📄 Resume Upload & Parsing
-Supports PDF and DOCX resumes.
+Understanding whether a resume matches a specific job
 
-```
-Resume Upload → Multer → PDF/DOCX Parser → Text Extraction → MongoDB
-                                              ↓
-                                      Temporary File Deleted
-```
+Finding missing or weak skills
 
-### 🤖 AI Resume Analysis
-Users provide a job description and select a resume. Gemini analyzes the resume against the target role and provides:
-- Resume-to-job match score
-- Matched skills
-- Missing skills
-- Personalized recommendations
-- Areas for improvement
+Improving resume content for a target role
 
-### 🎯 Skill Gap Detection
-Identifies skills already present in the resume and important job-description skills that are missing or insufficiently represented.
+Checking common ATS compatibility factors
 
-### 💬 AI Interview Preparation
-Generates personalized:
-- Technical questions
-- Behavioral questions
-- Situational questions
-- Resume-specific questions
-- Job-specific questions
+Preparing personalized interview questions
 
-### 📊 ATS Resume Checker
-Checks common ATS compatibility factors including:
-- Resume structure
-- Contact information
-- Resume sections
-- Formatting
-- Keywords
-- Job-description keyword matching
+Creating a clean, ATS-friendly resume
 
-> ATS scores are practical estimates and may vary between ATS platforms.
+✨ Features
 
-### 📝 AI Resume Builder
-A clean, single-column, ATS-friendly resume builder with:
-- Professional resume template
-- GitHub, LinkedIn, LeetCode and portfolio links
-- LaTeX source generation
-- Copy LaTeX source
-- `.tex` download
-- PDF generation
-- Browser print fallback
+Feature
 
-### ✨ AI ATS Resume Rewriter
-Tailors an existing resume to a target job description by improving:
-- Relevant keywords
-- Professional wording
-- Job relevance
-- ATS-friendly structure
-- Resume descriptions
+Description
 
-> ⚠️ The system is intended to improve existing information and should **not** be used to fabricate qualifications or experience.
+🔐 Authentication
 
----
+JWT-based registration, login, and protected routes
 
-## 🛠️ Tech Stack
+📄 Resume Upload
 
-**Frontend**
-- React.js
-- Vite
-- Tailwind CSS
-- Axios
-- React Router
-- React Icons
-- HTML2PDF.js
+PDF/DOCX resume upload
 
-**Backend**
-- Node.js
-- Express.js
-- MongoDB
-- Mongoose
-- JWT
-- Multer
-- PDF Parser
-- Mammoth
+🔍 Resume Parsing
 
-**AI**
-- Google Gemini API
-- `@google/generative-ai`
+Server-side text extraction
 
-**Deployment**
-- Frontend: Netlify
-- Backend: Render
-- Database: MongoDB Atlas
+🤖 AI Job Analysis
 
----
+Resume vs. job-description analysis
 
-## 🏗️ Architecture
+📊 Match Score
 
-```
-                         ┌─────────────────┐
-                         │      User       │
-                         └────────┬────────┘
-                                  │
-                                  ▼
-                         ┌─────────────────┐
-                         │ React + Vite    │
-                         │    Frontend     │
-                         └────────┬────────┘
-                                  │
-                              REST API
-                                  │
-                                  ▼
-                         ┌─────────────────┐
-                         │    Express.js   │
-                         │     Backend     │
-                         └───────┬─┬───────┘
-                                 │ │
-                    ┌────────────┘ └────────────┐
-                    ▼                           ▼
-             ┌─────────────┐             ┌─────────────┐
-             │  MongoDB    │             │ Gemini API  │
-             │    Atlas    │             │     AI      │
-             └─────────────┘             └─────────────┘
-```
+Estimated resume-to-job alignment
 
----
+🎯 Skill Gap
 
-## 📁 Project Structure
+Matched and missing skills
 
-```
+💡 AI Recommendations
+
+Personalized improvement suggestions
+
+💬 Interview Prep
+
+Technical, behavioral, and situational questions
+
+📈 ATS Checker
+
+Resume structure, formatting, and keyword checks
+
+📝 Resume Builder
+
+Professional single-column resume builder
+
+📑 LaTeX Export
+
+Generate, copy, and download LaTeX source
+
+✨ ATS Rewriter
+
+Tailor resume content to a target job
+
+📥 PDF Export
+
+PDF generation with browser print fallback
+
+🧠 Application Workflow
+
+Register / Login
+       ↓
+Upload Resume
+       ↓
+PDF / DOCX Text Extraction
+       ↓
+Select Resume + Add Job Description
+       ↓
+Gemini AI Analysis
+       ↓
+Match Score + Matched Skills + Missing Skills
+       ↓
+Recommendations
+       ↓
+Interview Questions
+       ↓
+ATS Check / ATS Rewrite
+       ↓
+Build & Download Resume
+
+🏗️ Architecture
+
+                         USER
+                           │
+                           ▼
+                 ┌──────────────────┐
+                 │ React + Vite     │
+                 │ Frontend         │
+                 └────────┬─────────┘
+                          │
+                       REST API
+                          │
+                          ▼
+                 ┌──────────────────┐
+                 │ Express.js       │
+                 │ Backend          │
+                 │ JWT + Controllers│
+                 └───────┬───┬──────┘
+                         │   │
+              ┌──────────┘   └──────────┐
+              ▼                         ▼
+       ┌──────────────┐          ┌──────────────┐
+       │ MongoDB      │          │ Google       │
+       │ Atlas        │          │ Gemini API   │
+       └──────────────┘          └──────────────┘
+
+🛠️ Tech Stack
+
+Frontend
+
+React.js
+
+Vite
+
+Tailwind CSS
+
+Axios
+
+React Router
+
+React Icons
+
+HTML2PDF.js
+
+Backend
+
+Node.js
+
+Express.js
+
+MongoDB
+
+Mongoose
+
+JWT
+
+Multer
+
+PDF parsing
+
+Mammoth
+
+AI
+
+Google Gemini API
+
+@google/generative-ai
+
+Deployment
+
+Netlify — Frontend
+
+Render — Backend
+
+MongoDB Atlas — Database
+
+📁 Project Structure
+
 ResumeAI/
-├── server/
+│
+├── client/                         # React + Vite frontend
+│   ├── src/
+│   │   ├── api/
+│   │   │   └── axios.js            # Axios API instance
+│   │   ├── components/
+│   │   │   ├── Navbar.jsx
+│   │   │   └── ProtectedRoute.jsx
+│   │   ├── context/
+│   │   │   └── AuthContext.jsx      # Authentication state
+│   │   ├── pages/
+│   │   │   ├── Home.jsx
+│   │   │   ├── Login.jsx
+│   │   │   ├── Register.jsx
+│   │   │   ├── Dashboard.jsx
+│   │   │   ├── UploadResume.jsx
+│   │   │   ├── JobAnalysis.jsx
+│   │   │   ├── SkillGap.jsx
+│   │   │   ├── ResumeBuilder.jsx
+│   │   │   └── AtsChecker.jsx
+│   │   ├── App.jsx
+│   │   ├── main.jsx
+│   │   └── index.css
+│   ├── package.json
+│   └── .env.example
+│
+├── server/                         # Express + MongoDB backend
 │   ├── config/
 │   │   └── db.js
 │   ├── controllers/
@@ -225,392 +257,516 @@ ResumeAI/
 │   ├── package.json
 │   └── .env.example
 │
-└── client/
-    ├── src/
-    │   ├── api/axios.js
-    │   ├── components/
-    │   ├── context/AuthContext.jsx
-    │   ├── pages/
-    │   │   ├── Home.jsx
-    │   │   ├── Login.jsx
-    │   │   ├── Register.jsx
-    │   │   ├── Dashboard.jsx
-    │   │   ├── UploadResume.jsx
-    │   │   ├── JobAnalysis.jsx
-    │   │   ├── SkillGap.jsx
-    │   │   ├── ResumeBuilder.jsx
-    │   │   └── AtsChecker.jsx
-    │   ├── App.jsx
-    │   ├── main.jsx
-    │   └── index.css
-    ├── package.json
-    └── .env.example
-```
+└── README.md
 
----
+⚙️ Prerequisites
 
-## ⚙️ Prerequisites
+Install the following before running the project:
 
-- Node.js 18+
-- Git
-- MongoDB or MongoDB Atlas
-- Google Gemini API key ([get one from Google AI Studio](https://aistudio.google.com/))
+Node.js 18+
 
----
+Git
 
-## 🚀 Getting Started
+MongoDB locally or MongoDB Atlas
 
-### 1. Clone the Repository
+Google Gemini API key
 
-```bash
+Get a Gemini API key:
+
+Google AI Studio
+
+🚀 Local Setup
+
+1. Clone the repository
+
 git clone https://github.com/pritivish07025/ResumeAI.git
 cd ResumeAI
-```
 
-### 2. Backend Setup
+2. Backend
 
-```bash
 cd server
 npm install
-```
 
-Create `.env` from `.env.example`:
+Create server/.env:
 
-```env
 PORT=5000
 MONGO_URI=mongodb://127.0.0.1:27017/resume-ai
 JWT_SECRET=replace_with_a_long_random_secret
 GEMINI_API_KEY=your_google_gemini_api_key
 GEMINI_MODEL=gemini-2.5-flash
 CLIENT_URL=http://localhost:5173
-```
 
-Start the backend:
+Run:
 
-```bash
 npm run dev
-```
 
-- Backend: `http://localhost:5000`
-- API: `http://localhost:5000/api`
+Backend API:
 
-### 3. Frontend Setup
+http://localhost:5000/api
+
+3. Frontend
 
 Open another terminal:
 
-```bash
 cd client
 npm install
-```
 
-Create `.env`:
+Create client/.env:
 
-```env
 VITE_API_URL=http://localhost:5000/api
-```
 
-Start the frontend:
+Run:
 
-```bash
 npm run dev
-```
 
-- Frontend: `http://localhost:5173`
+Open:
 
----
+http://localhost:5173
 
-## 🔑 Environment Variables
+🔑 Environment Variables
 
-| Variable | Purpose | Example |
-|---|---|---|
-| `PORT` | Backend server port | `5000` |
-| `MONGO_URI` | MongoDB connection string | `mongodb://127.0.0.1:27017/resume-ai` |
-| `JWT_SECRET` | JWT signing secret | Random secret |
-| `GEMINI_API_KEY` | Gemini API key | `your_key` |
-| `GEMINI_MODEL` | Gemini model | `gemini-2.5-flash` |
-| `CLIENT_URL` | Frontend origin for CORS | `http://localhost:5173` |
-| `VITE_API_URL` | Backend API base URL | `http://localhost:5000/api` |
+Backend — server/.env
 
-> 🔒 Never commit `.env` files, API keys, passwords, JWT secrets, or MongoDB credentials.
+Variable
 
----
+Purpose
 
-## 🌍 Production Configuration
+PORT
 
-**Netlify — Frontend**
-```env
+Express server port
+
+MONGO_URI
+
+MongoDB connection string
+
+JWT_SECRET
+
+JWT signing secret
+
+GEMINI_API_KEY
+
+Gemini API key
+
+GEMINI_MODEL
+
+Gemini model
+
+CLIENT_URL
+
+Frontend origin used by CORS
+
+Frontend — client/.env
+
+Variable
+
+Purpose
+
+VITE_API_URL
+
+Backend API base URL
+
+Production
+
+# Netlify
 VITE_API_URL=https://resumeai-8ys4.onrender.com/api
-```
 
-**Render — Backend**
-```env
+# Render
 CLIENT_URL=https://resumea1.netlify.app
-```
 
-- Live frontend: [https://resumea1.netlify.app/](https://resumea1.netlify.app/)
-- Live API: `https://resumeai-8ys4.onrender.com/api`
-- Health check: `https://resumeai-8ys4.onrender.com/api/health`
+VITE_API_URL must include /api.
 
-> ⚠️ `VITE_API_URL` must include `/api`.
+Do not commit .env files or secrets.
 
----
-
-## 🔌 API Documentation
+🔌 API Overview
 
 Protected endpoints require:
 
-```
-Authorization: Bearer <token>
-```
+Authorization: Bearer <JWT_TOKEN>
 
-### Authentication
+Authentication
 
-| Method | Endpoint | Description | Auth |
-|---|---|---|---|
-| POST | `/api/auth/register` | Create account | No |
-| POST | `/api/auth/login` | Login and receive JWT | No |
-| GET | `/api/auth/me` | Get current user | Yes |
+Method
 
-### Resume
+Endpoint
 
-| Method | Endpoint | Description | Auth |
-|---|---|---|---|
-| POST | `/api/resume/upload` | Upload and parse resume | Yes |
-| GET | `/api/resume` | List user's resumes | Yes |
-| GET | `/api/resume/:id` | Get a resume | Yes |
-| DELETE | `/api/resume/:id` | Delete a resume | Yes |
+Auth
 
-Upload format:
+POST
 
-```
-Content-Type: multipart/form-data
-resume: <PDF or DOCX file>
-```
+/api/auth/register
 
-### AI Analysis
+Public
 
-| Method | Endpoint | Description | Auth |
-|---|---|---|---|
-| POST | `/api/analysis/skill-gap` | Analyze resume against job description | Yes |
-| POST | `/api/analysis/:id/interview-questions` | Generate interview questions | Yes |
-| POST | `/api/analysis/:id/ats-resume` | Generate ATS resume | Yes |
-| GET | `/api/analysis` | List analyses | Yes |
-| GET | `/api/analysis/:id` | Get analysis | Yes |
+POST
 
-Example request:
+/api/auth/login
 
-```json
+Public
+
+GET
+
+/api/auth/me
+
+Protected
+
+Resume
+
+Method
+
+Endpoint
+
+Auth
+
+POST
+
+/api/resume/upload
+
+Protected
+
+GET
+
+/api/resume
+
+Protected
+
+GET
+
+/api/resume/:id
+
+Protected
+
+DELETE
+
+/api/resume/:id
+
+Protected
+
+Analysis
+
+Method
+
+Endpoint
+
+Auth
+
+POST
+
+/api/analysis/skill-gap
+
+Protected
+
+POST
+
+/api/analysis/:id/interview-questions
+
+Protected
+
+POST
+
+/api/analysis/:id/ats-resume
+
+Protected
+
+GET
+
+/api/analysis
+
+Protected
+
+GET
+
+/api/analysis/:id
+
+Protected
+
+Builder APIs are under:
+
+/api/builder
+
+ATS APIs are under:
+
+/api/ats
+
+🧪 Health Check
+
+Local:
+
+http://localhost:5000/api/health
+
+Production:
+
+Backend Health Check
+
+Expected response:
+
 {
-  "resumeId": "resume_id",
-  "jobDescription": "Job description here"
+  "status": "ok",
+  "message": "Resume AI server is running"
 }
-```
 
-### Resume Builder
-Available under `/api/builder`
+🤝 Contributing
 
-### ATS Checker
-Available under `/api/ats`
+Contributions are welcome.
 
----
+You do not need direct write access to the repository. The recommended workflow is:
 
-## 🔄 User Workflow
+Fork
+ ↓
+Clone
+ ↓
+Create Branch
+ ↓
+Make Changes
+ ↓
+Test
+ ↓
+Commit
+ ↓
+Push
+ ↓
+Pull Request
+ ↓
+Review
+ ↓
+Merge
 
-```
-Register / Login
-      ↓
-Upload Resume
-      ↓
-Resume Text Extraction
-      ↓
-Select Resume + Add Job Description
-      ↓
-AI Resume Analysis
-      ↓
-Match Score + Skill Gap
-      ↓
-Interview Questions
-      ↓
-ATS Check / AI Rewrite
-      ↓
-Build & Download Improved Resume
-```
+1. Fork
 
----
+Go to:
 
-## 🧠 Technical Workflow
+ResumeAI GitHub Repository
 
-**Resume Processing**
-1. User uploads a PDF or DOCX.
-2. Multer receives the file.
-3. `parseResume.js` extracts text.
-4. Extracted data is stored in MongoDB.
-5. Temporary uploaded files are deleted.
+Click Fork.
 
-**AI Processing**
-1. Backend receives resume text and job description.
-2. `gemini.js` creates the AI prompt.
-3. Gemini processes the request.
-4. Backend parses the response.
-5. Analysis data is stored and returned to the frontend.
+2. Clone your fork
 
----
+Replace YOUR_USERNAME with your GitHub username:
 
-## 🤝 Contributing
+git clone https://github.com/YOUR_USERNAME/ResumeAI.git
+cd ResumeAI
 
-Contributions are welcome!
+3. Add the original repository as upstream
 
-1. **Fork the Repository** on GitHub.
+git remote add upstream https://github.com/pritivish07025/ResumeAI.git
+git remote -v
 
-2. **Clone Your Fork**
-   ```bash
-   git clone https://github.com/YOUR_USERNAME/ResumeAI.git
-   cd ResumeAI
-   ```
+4. Create a feature branch
 
-3. **Create a Feature Branch**
-   ```bash
-   git checkout -b feature/your-feature-name
-   ```
-   Examples:
-   ```bash
-   git checkout -b feature/cover-letter-generator
-   git checkout -b fix/ats-score-calculation
-   ```
+Do not work directly on main.
 
-4. **Install Dependencies**
-   ```bash
-   cd server && npm install
-   cd ../client && npm install
-   ```
+git checkout -b feature/your-feature-name
 
-5. **Configure Environment Variables** — create local `.env` files. Never commit them.
+Examples:
 
-6. **Make Your Changes** — keep changes focused and follow the existing project structure.
+git checkout -b feature/cover-letter-generator
+git checkout -b fix/ats-score
+git checkout -b docs/improve-readme
 
-7. **Test Your Changes** before opening a pull request:
-   - Test the frontend
-   - Test the backend
-   - Test affected API endpoints
-   - Check browser console errors
-   - Verify authentication if affected
-   - Check responsive behavior for UI changes
+5. Install dependencies
 
-8. **Commit**
-   ```bash
-   git add .
-   git commit -m "feat: add your feature"
-   ```
-   Recommended prefixes: `feat:` `fix:` `docs:` `refactor:` `style:` `test:` `chore:`
+Backend:
 
-9. **Push**
-   ```bash
-   git push origin feature/your-feature-name
-   ```
+cd server
+npm install
 
-10. **Open a Pull Request** — include what changed, why it changed, how it was tested, and screenshots/API examples when useful.
+Frontend:
 
-### 📋 Contribution Guidelines
-- Keep code readable and maintainable
-- Follow the existing folder structure
-- Avoid unnecessary dependencies
-- Do not commit secrets
-- Validate user input on the backend
-- Handle API and UI errors gracefully
-- Test changes before submitting a PR
-- Update documentation when adding major features
+cd ../client
+npm install
 
----
+6. Configure environment variables
 
-## 🐛 Reporting Issues
+Create local .env files using .env.example.
 
-When opening an issue, include:
+Never commit:
 
-- **Expected Behavior** — what should happen?
-- **Actual Behavior** — what happens instead?
-- **Steps to Reproduce**
-  ```
-  1. Open the application
-  2. Login
-  3. Upload a resume
-  4. Run analysis
-  5. Observe the issue
-  ```
-- **Environment** — browser, operating system, Node.js version, console/API error
+.env
+.env.local
 
-> 🔒 Never post API keys, passwords, JWT tokens, or other secrets.
+7. Make and test your changes
 
----
+For frontend changes:
 
-## 🔒 Security
+cd client
+npm run build
+
+For backend changes, start the server and verify:
+
+GET /api/health
+
+Also test the feature or endpoint you changed.
+
+8. Commit
+
+git add .
+git commit -m "feat: add your feature"
+
+Recommended prefixes:
+
+feat:      new feature
+fix:       bug fix
+docs:      documentation
+refactor:  code restructuring
+style:     UI/formatting
+test:      tests
+chore:     maintenance
+
+9. Push
+
+git push origin feature/your-feature-name
+
+10. Open a Pull Request
+
+Create a Pull Request from your fork to:
+
+pritivish07025/ResumeAI
+
+Include:
+
+What changed
+
+Why the change was needed
+
+How you tested it
+
+Screenshots for UI changes
+
+API examples for API changes
+
+🔄 Sync Your Fork
+
+Before starting new work:
+
+git checkout main
+git fetch upstream
+git merge upstream/main
+
+Then create a new branch:
+
+git checkout -b feature/new-feature
+
+🐛 Bug Reports
+
+Before opening an issue:
+
+Search existing issues.
+
+Confirm the problem still exists.
+
+Check browser console and backend logs.
+
+Provide clear reproduction steps.
+
+Include:
+
+Expected behavior:
+Actual behavior:
+Steps to reproduce:
+Browser:
+Operating system:
+Node.js version:
+Relevant error:
+
+Never include:
+
+API keys
+Passwords
+JWT tokens
+MongoDB credentials
+.env contents
+Private user data
+
+🔒 Security
 
 ResumeAI uses:
-- JWT authentication
-- Protected API routes
-- Password hashing
-- CORS configuration
-- Environment variables
-- Temporary file cleanup
-- User-specific resources
 
-If a secret is accidentally exposed, rotate it immediately.
+JWT authentication
 
----
+Protected routes
 
-## ⚠️ Limitations
+Password hashing
 
-- Gemini API usage is subject to API quotas and limits.
-- AI-generated recommendations should be reviewed before use.
-- ATS scores are estimates and can vary between providers.
-- Resume parsing quality can vary with document formatting.
-- AI output does not guarantee job selection.
-- ResumeAI should not be used to fabricate experience or qualifications.
+CORS
 
----
+Environment variables
 
-## 🗺️ Future Roadmap
+User-specific data access
 
-- [ ] Cover letter generator
-- [ ] Multiple resume templates
-- [ ] Resume version history
-- [ ] Job application tracker
-- [ ] LinkedIn profile optimization
-- [ ] AI mock interviews
-- [ ] Voice-based interview practice
-- [ ] Resume analytics
-- [ ] Advanced ATS scoring
-- [ ] Rate limiting
-- [ ] Redis caching
-- [ ] Email notifications
-- [ ] User profile customization
+Temporary uploaded-file cleanup
 
----
+If a secret is accidentally exposed, rotate/revoke it immediately and update the deployment environment.
 
-## 💡 Inspiration
+⚠️ Limitations
 
-- [Overleaf — Jake's Resume](https://www.overleaf.com/)
-- [Kickresume ATS Checker](https://www.kickresume.com/)
+Gemini responses depend on API availability and configured model.
 
----
+AI usage may be subject to quotas and rate limits.
 
-## 👩‍💻 Author
+ATS scores are estimates and can differ between ATS providers.
 
-**Priti Vishwakarma**
-B.Tech Computer Science Engineering, Kashi Institute of Technology
+Resume parsing quality can vary with document formatting.
 
-**Connect With Me**
-- 💻 [GitHub](https://github.com/pritivish07025)
-- 🔗 LinkedIn
-- 🧩 LeetCode
+AI-generated content should be reviewed before submission.
 
----
+The application should not be used to fabricate qualifications or experience.
 
-## ⭐ Support
+🗺️ Roadmap
 
-If you find ResumeAI useful, consider giving the repository a ⭐ on GitHub. Ideas, improvements, bug fixes, and pull requests are welcome!
+Multiple resume templates
 
----
+Cover letter generator
 
-## 📄 License
+Resume version history
+
+Job application tracker
+
+LinkedIn profile optimization
+
+AI mock interviews
+
+Voice-based interview practice
+
+Advanced ATS scoring
+
+Resume analytics
+
+Rate limiting
+
+Redis caching
+
+Automated tests
+
+CI/CD pipeline
+
+Accessibility improvements
+
+👩‍💻 Author
+
+Priti Vishwakarma
+
+B.Tech Computer Science Engineering
+Kashi Institute of Technology
+
+💻 GitHub
+
+🔗 LinkedIn
+
+🧩 LeetCode
+
+⭐ Support
+
+If you find ResumeAI useful:
+
+⭐ Star the repository
+
+🐛 Report bugs
+
+💡 Suggest improvements
+
+🤝 Submit a Pull Request
+
+📖 Improve documentation
+
+📄 License
 
 This project is currently intended for educational, learning, and portfolio purposes.
