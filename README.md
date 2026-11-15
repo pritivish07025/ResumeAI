@@ -3,7 +3,6 @@
 
 **AI-Powered Resume Analysis, ATS Optimization, Resume Builder & Interview Preparation Platform**
 
-
 ResumeAI is a full-stack MERN application that helps students and job seekers analyze, improve, and optimize their resumes using Artificial Intelligence.
 
 Users can upload PDF or DOCX resumes, compare them with job descriptions, identify skill gaps, receive AI-powered recommendations, generate personalized interview questions, check ATS compatibility, and create ATS-friendly resumes.
